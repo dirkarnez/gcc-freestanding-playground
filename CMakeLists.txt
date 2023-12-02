@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.24)
 
-project(maze-solver)
+project("gcc-freestanding-playground")
 
 SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static")
 
