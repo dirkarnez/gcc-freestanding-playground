@@ -18,3 +18,10 @@ void _start() {
     // Terminate the program
     asm("movl $0, %ebx; movl $1, %eax; int $0x80");
 }
+
+// #include <unistd.h>
+
+// int main() {
+//     write(1, "Hello World", 11); 
+//     return 0;
+// }
