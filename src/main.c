@@ -25,3 +25,32 @@ void _start() {
 //     write(1, "Hello World", 11); 
 //     return 0;
 // }
+
+
+
+
+#include <windows.h>
+
+#pragma comment(lib, "user32.lib")
+#pragma comment(lib, "kernel32.lib")
+
+void print_string(const char* buf, size_t length) {
+    DWORD done;
+    WriteFile(GetStdHandle(STD_OUTPUT_HANDLE), buf, length, &done, NULL);
+}
+
+size_t strlen( const char *s ) 
+{
+    size_t n = 0;
+    while (s[n]) {
+        ++n;
+    }
+    return n;
+}
+
+int main() {
+    const char* str = "Hello World!";
+    print_string(str, strlen(str));
+    return 0;
+}
+
