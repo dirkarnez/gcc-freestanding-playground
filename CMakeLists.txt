@@ -19,7 +19,7 @@
 
 cmake_minimum_required(VERSION 3.24)
 
-project(gcc-freestanding-playground C)
+project("gcc-freestanding-playground" C)
 
 # Add the executable
 add_executable(${PROJECT_NAME}
