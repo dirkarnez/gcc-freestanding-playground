@@ -19,7 +19,9 @@
 
 cmake_minimum_required(VERSION 3.24)
 
-project(gcc-freestanding-playground C)
+set(ENTRY_SYMBOL "_start" CACHE STRING "Custom entry point symbol for the linker")
+
+project("gcc-freestanding-playground" C)
 
 # Add the executable
 add_executable(${PROJECT_NAME}
@@ -42,6 +44,13 @@ target_link_options(${PROJECT_NAME} PRIVATE
     -nodefaultlibs
     -static
 )
+
+target_link_libraries(${PROJECT_NAME}
+    PRIVATE
+    kernel32
+    user32 
+)
+
 
 # Optional: pass a custom linker script via -DLINKER_SCRIPT=/path/to/script.ld
 # CMake invocation example: cmake -DLINKER_SCRIPT=path/to/linker.ld ..
