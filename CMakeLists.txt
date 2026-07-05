@@ -36,6 +36,12 @@ target_compile_options(${PROJECT_NAME} PRIVATE
     -fno-builtin
 )
 
+# Target both C and C++ standard include removals if necessary
+target_compile_options(${PROJECT_NAME} PRIVATE 
+    $<$<COMPILE_LANGUAGE:C>:-nostdinc>
+    $<$<COMPILE_LANGUAGE:CXX>:-nostdinc++>
+)
+
 # Link-time flags: avoid the default C runtime and system libraries; link statically
 # Use target_link_options (requires CMake >= 3.13; we require 3.24)
 target_link_options(${PROJECT_NAME} PRIVATE
@@ -50,7 +56,6 @@ target_link_libraries(${PROJECT_NAME}
     kernel32
     user32 
 )
-
 
 # Optional: pass a custom linker script via -DLINKER_SCRIPT=/path/to/script.ld
 # CMake invocation example: cmake -DLINKER_SCRIPT=path/to/linker.ld ..
